@@ -17,7 +17,7 @@ const FundoGradiente = styled.div`
     #154580 96.76%
   );
   width: 100%;
-  height: 100vh;
+  height: 100%;
 `;
 
 const AppContainer = styled.div`
