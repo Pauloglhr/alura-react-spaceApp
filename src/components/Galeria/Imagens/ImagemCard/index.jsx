@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import favoritar from '/icones/favorito.png';
 import expandir from '/icones/expandir.png';
+import BotaoIcon from "components/BotaoIcon";
 
 
 const FigureEstilizado = styled.figure`
@@ -58,21 +59,23 @@ const FigureEstilizado = styled.figure`
     }
 `
 
-const ImagemCard = ({ foto }) => {
+const ImagemCard = ({ foto, expandida = false, aoSelecionarFoto }) => {
     return (
-        <FigureEstilizado>
+        <FigureEstilizado $expandida={expandida}>
             <img src={foto.path} alt="" />
             <figcaption>
                 <h3>{foto.titulo}</h3>
                 <footer>
                     <h4>{foto.fonte}</h4>
                     <div>
-                        <button>
+                        <BotaoIcon>
                             <img src={favoritar} alt="" />
-                        </button>
-                        <button>
-                            <img src={expandir} alt="" />
-                        </button>
+                        </BotaoIcon>
+                        {!expandida &&
+                            <BotaoIcon onClick={() => aoSelecionarFoto(foto)}>
+                                <img src={expandir} alt="" />
+                            </BotaoIcon>
+                        }
                     </div>
                 </footer>
             </figcaption>
