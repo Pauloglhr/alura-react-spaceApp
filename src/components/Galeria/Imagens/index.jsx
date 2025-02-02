@@ -4,7 +4,7 @@ import ImagemCard from "./ImagemCard";
 const ContainerImagens = styled.section`
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 24px;
 `
 
 const Imagens = ({ fotos, aoSelecionarFoto }) => {

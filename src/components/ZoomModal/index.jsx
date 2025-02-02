@@ -1,7 +1,7 @@
 import BotaoIcon from "components/BotaoIcon";
 import ImagemCard from "components/Galeria/Imagens/ImagemCard";
 import styled from "styled-components";
-import fechar from '../../../public/icones/fechar.png';
+import fechar from '/icones/fechar.png';
 
 const Overlay = styled.div`
   background-color: rgba(0, 0, 0, 0.7);
@@ -30,14 +30,14 @@ position: absolute;
     }
 `;
 
-const ZoomModal = ({ foto }) => {
+const ZoomModal = ({ foto, aoFechar }) => {
   return (
     <>
       {foto && <>
         <Overlay />
         <DialogEstilizado open={true}>
             <ImagemCard foto={foto} expandida={true} />
-            <BotaoIcon>
+            <BotaoIcon onClick={aoFechar}>
                 <img src={fechar} alt="" />
             </BotaoIcon>
         </DialogEstilizado>

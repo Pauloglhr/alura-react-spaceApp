@@ -43,6 +43,10 @@ const App = () => {
   const [fotosGaleria, setFotosGaleria] = useState(fotos);
   const [fotoSelecionada, setFotoSelecionada] = useState(null);
 
+  const aoFechar = () => {
+    return setFotoSelecionada(null)
+  }
+
   return (
     <FundoGradiente>
       <EstilosGlobais />
@@ -61,7 +65,7 @@ const App = () => {
             />
           </ContentContainer>
         </MainContainer>
-        <ZoomModal foto={fotoSelecionada}/>
+        <ZoomModal foto={fotoSelecionada} aoFechar={aoFechar}/>
       </AppContainer>
     </FundoGradiente>
   );

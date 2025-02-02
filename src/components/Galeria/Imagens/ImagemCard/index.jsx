@@ -9,7 +9,9 @@ const FigureEstilizado = styled.figure`
         margin: 0px;
     }
 
-    width: ${(props) => (props.$expandida ? '90%' : '460px')};
+    flex-grow: 1;
+
+    width: ${(props) => (props.$expandida ? '90%' : '420px')};
     max-width: 100%;
     margin: 0;
     display: flex;
