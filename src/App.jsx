@@ -47,6 +47,10 @@ const App = () => {
     return setFotoSelecionada(null)
   }
 
+  const aoFavoritarFoto = (foto) => {
+    console.log(foto);
+  }
+
   return (
     <FundoGradiente>
       <EstilosGlobais />
@@ -62,6 +66,7 @@ const App = () => {
             <Galeria
               fotos={fotosGaleria}
               aoSelecionarFoto={(foto) => setFotoSelecionada(foto)}
+              aoFavoritarFoto={aoFavoritarFoto}
             />
           </ContentContainer>
         </MainContainer>

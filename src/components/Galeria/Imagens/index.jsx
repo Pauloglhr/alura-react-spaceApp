@@ -7,10 +7,18 @@ const ContainerImagens = styled.section`
     gap: 24px;
 `
 
-const Imagens = ({ fotos, aoSelecionarFoto }) => {
+const Imagens = ({ fotos, aoSelecionarFoto, aoFavoritarFoto }) => {
     return (
         <ContainerImagens>
-            {fotos.map(foto => <ImagemCard key={foto.id} foto={foto} aoSelecionarFoto={aoSelecionarFoto}/>)}
+            {fotos.map(foto => 
+                <ImagemCard 
+                    key={foto.id} 
+                    foto={foto} 
+                    aoSelecionarFoto={aoSelecionarFoto}
+                    aoFavoritarFoto={aoFavoritarFoto}
+                />
+                )
+            }
         </ContainerImagens>
     )
 };

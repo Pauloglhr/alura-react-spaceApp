@@ -61,7 +61,7 @@ const FigureEstilizado = styled.figure`
     }
 `
 
-const ImagemCard = ({ foto, expandida = false, aoSelecionarFoto }) => {
+const ImagemCard = ({ foto, expandida = false, aoSelecionarFoto, aoFavoritarFoto }) => {
     return (
         <FigureEstilizado $expandida={expandida}>
             <img src={foto.path} alt="" />
@@ -70,7 +70,7 @@ const ImagemCard = ({ foto, expandida = false, aoSelecionarFoto }) => {
                 <footer>
                     <h4>{foto.fonte}</h4>
                     <div>
-                        <BotaoIcon>
+                        <BotaoIcon onClick={() => aoFavoritarFoto(foto)}>
                             <img src={favoritar} alt="" />
                         </BotaoIcon>
                         {!expandida &&
