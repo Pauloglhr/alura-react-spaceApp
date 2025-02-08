@@ -30,13 +30,13 @@ position: absolute;
     }
 `;
 
-const ZoomModal = ({ foto, aoFechar }) => {
+const ZoomModal = ({ foto, aoFechar, aoFavoritarFoto }) => {
   return (
     <>
       {foto && <>
         <Overlay />
         <DialogEstilizado open={true}>
-            <ImagemCard foto={foto} expandida={true} />
+            <ImagemCard foto={foto} expandida={true} aoFavoritarFoto={aoFavoritarFoto}/>
             <BotaoIcon onClick={aoFechar}>
                 <img src={fechar} alt="" />
             </BotaoIcon>

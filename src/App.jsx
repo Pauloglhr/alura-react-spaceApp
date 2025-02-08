@@ -48,7 +48,20 @@ const App = () => {
   }
 
   const aoFavoritarFoto = (foto) => {
-    console.log(foto);
+
+    if(foto.id === fotoSelecionada?.id){
+      setFotoSelecionada({
+        ...fotoSelecionada,
+        favorita: !fotoSelecionada.favorita
+      })    
+    }
+
+    setFotosGaleria(fotosGaleria.map(fotoDaGaleria => {
+      return({
+        ...fotoDaGaleria,
+        favorita: foto.id === fotoDaGaleria.id ? !foto.favorita : fotoDaGaleria.favorita
+      })
+    }))
   }
 
   return (
@@ -70,7 +83,7 @@ const App = () => {
             />
           </ContentContainer>
         </MainContainer>
-        <ZoomModal foto={fotoSelecionada} aoFechar={aoFechar}/>
+        <ZoomModal foto={fotoSelecionada} aoFechar={aoFechar} aoFavoritarFoto={aoFavoritarFoto}/>
       </AppContainer>
     </FundoGradiente>
   );
