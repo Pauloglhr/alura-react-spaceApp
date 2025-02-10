@@ -7,7 +7,7 @@ import Banner from "components/Banner";
 import Galeria from "components/Galeria";
 
 import fotos from "./fotos.json";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ZoomModal from "components/ZoomModal";
 
 const FundoGradiente = styled.div`
@@ -42,21 +42,45 @@ const ContentContainer = styled.section`
 const App = () => {
   const [fotosGaleria, setFotosGaleria] = useState(fotos);
   const [fotoSelecionada, setFotoSelecionada] = useState(null);
+  const [filtro, setFiltro] = useState('');
+  const [filtroTag, setFiltroTag] = useState(0);
+
+  useEffect(() =>{
+    if(filtro === ''){
+      setFotosGaleria(fotos)
+    } else {
+      const fotosFiltradas = fotos.filter(foto =>
+        foto.titulo.toLowerCase().includes(filtro.toLowerCase())
+      )
+      setFotosGaleria(fotosFiltradas);
+    }
+  }, [filtro])
+
+  useEffect(() =>{
+    if(filtroTag === 0){
+      setFotosGaleria(fotos)
+    } else {
+      const fotosFiltradas = fotos.filter(foto =>
+        foto.tagId === filtroTag
+      )
+      setFotosGaleria(fotosFiltradas)
+    }
+  }, [filtroTag])
 
   const aoFechar = () => {
     return setFotoSelecionada(null)
   }
 
   const aoFavoritarFoto = (foto) => {
-
-    if(foto.id === fotoSelecionada?.id){
+    
+    if (foto.id === fotoSelecionada?.id) {
       setFotoSelecionada({
         ...fotoSelecionada,
         favorita: !fotoSelecionada.favorita
-      })    
+      })
     }
-
-    setFotosGaleria(fotosGaleria.map(fotoDaGaleria => {
+    
+    setFotosGaleria(fotosGaleria.map(fotoDaGaleria =>{
       return({
         ...fotoDaGaleria,
         favorita: foto.id === fotoDaGaleria.id ? !foto.favorita : fotoDaGaleria.favorita
@@ -68,7 +92,7 @@ const App = () => {
     <FundoGradiente>
       <EstilosGlobais />
       <AppContainer>
-        <Cabecalho />
+        <Cabecalho aoDigitado={(prop) => setFiltro(prop)}/>
         <MainContainer>
           <BarraLateral />
           <ContentContainer>
@@ -80,6 +104,7 @@ const App = () => {
               fotos={fotosGaleria}
               aoSelecionarFoto={(foto) => setFotoSelecionada(foto)}
               aoFavoritarFoto={aoFavoritarFoto}
+              aoSelecionarTag={(tag) => setFiltroTag(tag)}
             />
           </ContentContainer>
         </MainContainer>

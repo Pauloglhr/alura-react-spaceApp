@@ -2,26 +2,31 @@
     {
         "id": 0,
         "titulo": "Todas",
-        "ativo": true
+        "ativo": true,
+        "tag": 0
     },
     {
         "id": 1,
         "titulo": "Estrelas",
-        "ativo": false
+        "ativo": false,
+        "tag": 1
     },
     {
         "id": 2,
         "titulo": "Galáxias",
-        "ativo": false
+        "ativo": false,
+        "tag": 2
     },
     {
         "id": 3,
         "titulo": "Luas",
-        "ativo": false
+        "ativo": false,
+        "tag": 3
     },
     {
         "id": 4,
         "titulo": "Nebulosas",
-        "ativo": false
+        "ativo": false,
+        "tag": 4
     }
 ]

@@ -22,18 +22,21 @@ const Tag = styled.button`
   transition: background-color 0.3s ease;
   padding: 12px;
   box-sizing: border-box;
-  border: 2px solid transparent;
-  &:hover {
-    border-color: #c98cf1;
-  }
+  border: 2px solid ${(props) => (props.$ativo ? "#c98cf1" : "transparent")};
 `;
 
-const Tags = () => {
+const Tags = ({ aoSelecionarTag }) => {
   return (
     <TagContainer>
       <TagTitulo>Busque por tags:</TagTitulo>
       {tags.map((tag) => (
-        <Tag key={tag.id}>{tag.titulo}</Tag>
+        <Tag
+          key={tag.id}
+          $ativo={tag.ativo}
+          onClick={() => aoSelecionarTag(tag.tag)}
+        >
+          {tag.titulo}
+        </Tag>
       ))}
     </TagContainer>
   );
